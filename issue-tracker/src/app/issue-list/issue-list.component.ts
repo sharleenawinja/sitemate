@@ -26,7 +26,7 @@ export class IssueListComponent implements OnInit {
   createIssue(): void {
     this.issueService.createIssue(this.newIssue).subscribe((issue) => {
       this.issues.push(issue);
-      this.newIssue = { id: 0, title: '', description: '' }; // Reset form
+      this.newIssue = { id: 0, title: '', description: '' };
     });
   }
 
@@ -37,7 +37,7 @@ export class IssueListComponent implements OnInit {
         .subscribe((updatedIssue) => {
           const index = this.issues.findIndex((i) => i.id === updatedIssue.id);
           this.issues[index] = updatedIssue;
-          this.selectedIssue = null; // Deselect after update
+          this.selectedIssue = null;
         });
     }
   }
@@ -49,6 +49,6 @@ export class IssueListComponent implements OnInit {
   }
 
   selectIssue(issue: Issue): void {
-    this.selectedIssue = { ...issue }; // Copy to avoid modifying the original before save
+    this.selectedIssue = { ...issue };
   }
 }
