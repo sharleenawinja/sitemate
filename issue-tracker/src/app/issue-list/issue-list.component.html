@@ -1,0 +1,43 @@
+<div>
+  <h2>Issues</h2>
+  <ul>
+    <li *ngFor="let issue of issues">
+      <h3>{{ issue.title }}</h3>
+      <p>{{ issue.description }}</p>
+      <button (click)="selectIssue(issue)">Edit</button>
+      <button (click)="deleteIssue(issue.id)">Delete</button>
+    </li>
+  </ul>
+
+  <h3>Create New Issue</h3>
+  <form (ngSubmit)="createIssue()">
+    <label>
+      Title:
+      <input [(ngModel)]="newIssue.title" name="title" required />
+    </label>
+    <label>
+      Description:
+      <input [(ngModel)]="newIssue.description" name="description" required />
+    </label>
+    <button type="submit">Create</button>
+  </form>
+
+  <div *ngIf="selectedIssue">
+    <h3>Edit Issue</h3>
+    <form (ngSubmit)="updateIssue(selectedIssue)">
+      <label>
+        Title:
+        <input [(ngModel)]="selectedIssue.title" name="title" required />
+      </label>
+      <label>
+        Description:
+        <input
+          [(ngModel)]="selectedIssue.description"
+          name="description"
+          required
+        />
+      </label>
+      <button type="submit">Update</button>
+    </form>
+  </div>
+</div>
